@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Route,Routes,Link } from 'react-router-dom'
+import Hello from './component/Hello'
+import About from './component/About'
+import EmployeeForm from './component/EmployeeForm';
+import Home from './component/EmployeeHome'
+class App extends React.Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render() {
+    return(
+      <div>
+        <h1>App Component</h1>
+        <nav>
+          <Link to="/">Hello</Link> |
+          <Link to="/about">About</Link> | 
+          <Link to="/add">Add Employee</Link>
+
+        </nav>
+      <Routes>
+        <Route path="/hello" element={<Hello />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/add" element={<EmployeeForm />} />
+        <Route path="/update/:id" element={<EmployeeForm />} />
+      </Routes>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
